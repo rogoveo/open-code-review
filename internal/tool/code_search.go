@@ -1,6 +1,7 @@
 package tool
 
 import (
+	"bytes"
 	"fmt"
 	"os/exec"
 	"strconv"
@@ -51,7 +52,7 @@ func (p *CodeSearchProvider) buildGrepArgs(searchText string, caseSensitive bool
 	if usePerlRegexp {
 		cmdArgs = append(cmdArgs, "-P")
 	} else {
-		cmdArgs = append(cmdArgs, "-E")
+		cmdArgs = append(cmdArgs, "-F")
 	}
 
 	cmdArgs = append(cmdArgs, "-n", "--no-color")
@@ -75,16 +76,20 @@ func (p *CodeSearchProvider) gitGrep(searchText string, caseSensitive bool, useP
 	cmd := exec.Command("git", cmdArgs...)
 	cmd.Dir = p.FileReader.RepoDir
 
-	output, err := cmd.Output()
-	outStr := string(output)
+	var stdout, stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+
+	err := cmd.Run()
+	outStr := stdout.String()
 
 	if err != nil {
 		if outStr == "" {
-			// git grep exits with code 1 for zero matches; treat as normal.
-			return "No matches found", nil
+			if stderr.Len() == 0 {
+				return "No matches found", nil
+			}
+			return fmt.Sprintf("Error: %s", strings.TrimSpace(stderr.String())), nil
 		}
-		// Rare: non-zero exit but stdout has partial output (e.g. signal
-		// during execution). Process whatever was captured.
 	}
 
 	lines := strings.Split(strings.TrimRight(outStr, "\n"), "\n")
@@ -141,6 +146,10 @@ func (p *CodeSearchProvider) gitGrep(searchText string, caseSensitive bool, useP
 			sb.WriteString(fmt.Sprintf("%d|%s\n", m.lineNum, m.content))
 		}
 		sb.WriteString("\n")
+	}
+
+	if err != nil && stderr.Len() > 0 {
+		sb.WriteString(fmt.Sprintf("Warning: %s\n", strings.TrimSpace(stderr.String())))
 	}
 
 	return sb.String(), nil
