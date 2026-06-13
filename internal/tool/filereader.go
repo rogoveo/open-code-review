@@ -127,7 +127,7 @@ func (fr *FileReader) readFromGitShow(parentCtx context.Context, path string) (s
 	ctx, cancel := context.WithTimeout(parentCtx, 30*time.Second)
 	defer cancel()
 
-	args := []string{"-c", "core.quotepath=false", "show", fr.Ref + ":" + path}
+	args := []string{"-c", "core.quotepath=false", "show", "--end-of-options", fr.Ref + ":" + path}
 	if fr.Runner != nil {
 		output, err := fr.Runner.Output(ctx, fr.RepoDir, args...)
 		if err != nil {
@@ -213,7 +213,7 @@ func (fr *FileReader) readLinesFromDisk(path string, startLine, maxLines int) ([
 }
 
 func (fr *FileReader) readLinesFromGitShow(ctx context.Context, path string, startLine, maxLines int) ([]string, int, error) {
-	args := []string{"-c", "core.quotepath=false", "show", fr.Ref + ":" + path}
+	args := []string{"-c", "core.quotepath=false", "show", "--end-of-options", fr.Ref + ":" + path}
 
 	var collected []string
 	var totalLines int

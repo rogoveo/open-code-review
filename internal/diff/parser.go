@@ -92,7 +92,7 @@ func finalizeDiff(ctx context.Context, d *model.Diff, repoDir string, ref string
 		return
 	}
 	if ref != "" {
-		args := []string{"-c", "core.quotepath=false", "show", ref + ":" + d.NewPath}
+		args := []string{"-c", "core.quotepath=false", "show", "--end-of-options", ref + ":" + d.NewPath}
 		var output []byte
 		var err error
 		if runner != nil {

@@ -124,6 +124,28 @@ func TestCommitDiffSurvivesExternalDiffTool(t *testing.T) {
 	}
 }
 
+func TestCommitDiffTreatsOptionLikeRefAsRevision(t *testing.T) {
+	repo := initRepoWithChange(t)
+	pagerPath := filepath.Join(repo, "pwn.sh")
+	proofPath := filepath.Join(repo, "PROOF")
+	if err := os.WriteFile(pagerPath, []byte("#!/bin/sh\nprintf pwned > PROOF\n"), 0755); err != nil {
+		t.Fatalf("write pager: %v", err)
+	}
+
+	runner := gitcmd.New(0)
+	provider := NewCommitProvider(repo, "-O./pwn.sh", runner)
+
+	_, err := provider.GetDiff(context.Background())
+	if err == nil {
+		t.Fatal("expected option-like commit ref to fail as an invalid revision")
+	}
+	if _, statErr := os.Stat(proofPath); statErr == nil {
+		t.Fatal("option-like commit ref was interpreted as a git show option")
+	} else if !os.IsNotExist(statErr) {
+		t.Fatal(statErr)
+	}
+}
+
 // TestRangeDiffSurvivesExternalDiffTool covers the ModeRange call site
 // (git diff <base> <to>), which likewise must pass --no-ext-diff so that a
 // user's external diff tool does not break range comparisons.

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/open-code-review/open-code-review/internal/agent"
@@ -47,6 +48,9 @@ func runReview(args []string) error {
 	repoDir, err := resolveRepoDir(opts.repoDir)
 	if err != nil {
 		return fmt.Errorf("resolve repo: %w", err)
+	}
+	if err := validateReviewRefs(repoDir, opts); err != nil {
+		return err
 	}
 
 	if opts.commit != "" && opts.background == "" {
@@ -212,6 +216,33 @@ func requireGitRepo(dir string) error {
 	out, err := runGitCmd(repoDir, "rev-parse", "--git-dir")
 	if err != nil || len(out) == 0 {
 		return fmt.Errorf("%s is not a git repository, code review requires a valid git repository", repoDir)
+	}
+	return nil
+}
+
+func validateReviewRefs(repoDir string, opts reviewOptions) error {
+	refs := []struct {
+		flag string
+		ref  string
+	}{
+		{"--from", opts.from},
+		{"--to", opts.to},
+		{"--commit", opts.commit},
+	}
+	for _, item := range refs {
+		if item.ref == "" {
+			continue
+		}
+		if strings.HasPrefix(item.ref, "-") {
+			return fmt.Errorf("%s value %q is not a valid git ref: refs must not start with '-'", item.flag, item.ref)
+		}
+		if out, err := runGitCmd(repoDir, "rev-parse", "--verify", "--end-of-options", item.ref+"^{commit}"); err != nil {
+			msg := strings.TrimSpace(string(out))
+			if msg != "" {
+				return fmt.Errorf("%s value %q is not a valid commit ref: %s", item.flag, item.ref, msg)
+			}
+			return fmt.Errorf("%s value %q is not a valid commit ref", item.flag, item.ref)
+		}
 	}
 	return nil
 }
