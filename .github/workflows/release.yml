@@ -114,7 +114,10 @@ jobs:
           win32-x64:opencodereview-windows-amd64.exe:opencodereview.exe"
 
           for entry in $PLATFORMS; do
-            IFS=':' read -r platform_dir dist_binary dest_name <<< "$entry"
+            platform_dir="${entry%%:*}"
+            rest="${entry#*:}"
+            dist_binary="${rest%%:*}"
+            dest_name="${rest#*:}"
             pkg_dir="npm/$platform_dir"
             mkdir -p "$pkg_dir/bin"
             cp "$dist_binary" "$pkg_dir/bin/$dest_name"
