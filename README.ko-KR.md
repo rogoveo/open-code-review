@@ -12,10 +12,10 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@alibaba-group/open-code-review"><img alt="npm" src="https://img.shields.io/npm/v/@alibaba-group/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/alibaba/open-code-review/release.yml?style=flat-square" /></a>
-  <a href="https://goreportcard.com/report/github.com/alibaba/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://deepwiki.com/alibaba/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/rogoveo/open-code-review/release.yml?style=flat-square" /></a>
+  <a href="https://goreportcard.com/report/github.com/rogoveo/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://deepwiki.com/rogoveo/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
   <a href="https://www.bestpractices.dev/projects/13328"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/13328/badge" /></a>
 </p>
 <p align="center">
@@ -106,43 +106,43 @@ npm install -g @alibaba-group/open-code-review
 명령 한 번으로 사용 중인 OS/아키텍처에 맞는 최신 binary를 설치합니다 (macOS / Linux):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh | sh
 ```
 
 이 스크립트는 알맞은 릴리스 binary를 선택하고 SHA-256 체크섬을 검증한 뒤 `ocr`로 `/usr/local/bin`에 설치합니다. 설치 위치는 `OCR_INSTALL_DIR`로, 릴리스 버전은 `OCR_VERSION`으로 재정의할 수 있습니다:
 
 ```bash
 OCR_INSTALL_DIR="$HOME/.local/bin" OCR_VERSION=v1.3.13 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh)"
 ```
 
 <details>
 <summary>수동 다운로드 (Windows 포함 모든 플랫폼)</summary>
 
-[GitHub Releases](https://github.com/alibaba/open-code-review/releases)에서 사용 중인 플랫폼의 binary를 다운로드합니다.
+[GitHub Releases](https://github.com/rogoveo/open-code-review/releases)에서 사용 중인 플랫폼의 binary를 다운로드합니다.
 
 ```bash
 # macOS (Apple Silicon)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # macOS (Intel)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (x86_64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (ARM64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Windows (x86_64): ocr.exe를 PATH에 포함된 디렉터리로 이동하세요
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
 
 # Windows (ARM64): ocr.exe를 PATH에 포함된 디렉터리로 이동하세요
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
 ```
 
 </details>
@@ -150,7 +150,7 @@ curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/dow
 **소스에서 빌드**
 
 ```bash
-git clone https://github.com/alibaba/open-code-review.git
+git clone https://github.com/rogoveo/open-code-review.git
 cd open-code-review
 make build
 sudo cp dist/opencodereview /usr/local/bin/ocr
@@ -242,7 +242,7 @@ OCR은 AI coding agent에 slash command로 자연스럽게 통합할 수 있으�
 `npx`로 OCR skill을 프로젝트에 설치합니다.
 
 ```bash
-npx skills add alibaba/open-code-review --skill open-code-review
+npx skills add rogoveo/open-code-review --skill open-code-review
 ```
 
 이 명령은 [skills registry](skills/open-code-review/SKILL.md)의 `open-code-review` skill을 설치합니다. 이 skill은 coding agent가 `ocr`을 호출해 코드 리뷰를 수행하고, issue를 우선순위별로 분류하며, 필요한 경우 fix를 적용하는 방법을 알려줍니다.
@@ -252,7 +252,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)에서는 Claude Code 안에서 다음 명령으로 command plugin을 설치합니다.
 
 ```bash
-/plugin marketplace add alibaba/open-code-review
+/plugin marketplace add rogoveo/open-code-review
 /plugin install open-code-review@open-code-review
 ```
 
@@ -263,7 +263,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 local Codex에서는 이 repository에서 Open Code Review plugin을 설치합니다.
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 /plugins
 ```
@@ -303,7 +303,7 @@ package manager 없이 빠르게 설정하려면 command 파일을 복사해 Cla
 ```bash
 mkdir -p .claude/commands
 curl -o .claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 **User-level**(여러 프로젝트에서 개인 전역 사용):
@@ -311,7 +311,7 @@ curl -o .claude/commands/open-code-review.md \
 ```bash
 mkdir -p ~/.claude/commands
 curl -o ~/.claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 > **전제 조건**: 모든 통합 방식은 `ocr` CLI가 설치되어 있고 LLM이 설정되어 있어야 합니다. 위의 [설치](#설치)와 [LLM 설정](#1-llm-설정)을 참고하세요.
@@ -553,7 +553,7 @@ exported data에 LLM prompt와 response를 포함하려면 `telemetry.content_lo
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/open-code-review&type=Date)](https://star-history.com/#alibaba/open-code-review&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rogoveo/open-code-review&type=Date)](https://star-history.com/#rogoveo/open-code-review&Date)
 
 ## License
 

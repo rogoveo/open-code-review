@@ -12,10 +12,10 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@alibaba-group/open-code-review"><img alt="npm" src="https://img.shields.io/npm/v/@alibaba-group/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/alibaba/open-code-review/release.yml?style=flat-square" /></a>
-  <a href="https://goreportcard.com/report/github.com/alibaba/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://deepwiki.com/alibaba/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/rogoveo/open-code-review/release.yml?style=flat-square" /></a>
+  <a href="https://goreportcard.com/report/github.com/rogoveo/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://deepwiki.com/rogoveo/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
   <a href="https://www.bestpractices.dev/projects/13328"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/13328/badge" /></a>
 </p>
 <p align="center">
@@ -106,43 +106,43 @@ After installation, the `ocr` command is available globally.
 Install the latest binary for your OS/architecture with one command (macOS / Linux):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh | sh
 ```
 
 The script picks the right release binary, verifies its SHA-256 checksum, and installs it as `ocr` in `/usr/local/bin`. Override the target with `OCR_INSTALL_DIR` or pin a release with `OCR_VERSION`:
 
 ```bash
 OCR_INSTALL_DIR="$HOME/.local/bin" OCR_VERSION=v1.3.13 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh)"
 ```
 
 <details>
 <summary>Manual download (all platforms, including Windows)</summary>
 
-Download the binary for your platform from [GitHub Releases](https://github.com/alibaba/open-code-review/releases):
+Download the binary for your platform from [GitHub Releases](https://github.com/rogoveo/open-code-review/releases):
 
 ```bash
 # macOS (Apple Silicon)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # macOS (Intel)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (x86_64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (ARM64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Windows (x86_64) — move ocr.exe to a directory in your PATH
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
 
 # Windows (ARM64) — move ocr.exe to a directory in your PATH
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
 ```
 
 </details>
@@ -150,7 +150,7 @@ curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/dow
 **From Source**
 
 ```bash
-git clone https://github.com/alibaba/open-code-review.git
+git clone https://github.com/rogoveo/open-code-review.git
 cd open-code-review
 make build
 sudo cp dist/opencodereview /usr/local/bin/ocr
@@ -242,7 +242,7 @@ OCR can be seamlessly integrated into AI coding agents as a slash command, enabl
 Use `npx` to install the OCR skill into your project:
 
 ```bash
-npx skills add alibaba/open-code-review --skill open-code-review
+npx skills add rogoveo/open-code-review --skill open-code-review
 ```
 
 This installs the `open-code-review` skill from the [skills registry](skills/open-code-review/SKILL.md), which teaches your coding agent how to invoke `ocr` for code review, classify issues by priority, and optionally apply fixes.
@@ -252,7 +252,7 @@ This installs the `open-code-review` skill from the [skills registry](skills/ope
 For [Claude Code](https://docs.anthropic.com/en/docs/claude-code), install the command plugin through the following command in Claude Code:
 
 ```bash
-/plugin marketplace add alibaba/open-code-review
+/plugin marketplace add rogoveo/open-code-review
 /plugin install open-code-review@open-code-review
 ```
 
@@ -263,7 +263,7 @@ This registers the `/open-code-review:review` slash command, which runs OCR and 
 For local Codex, install the Open Code Review plugin from this repository:
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 /plugins
 ```
@@ -303,7 +303,7 @@ For a quick setup without any package manager, simply copy the command file to u
 ```bash
 mkdir -p .claude/commands
 curl -o .claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 **User-level** (personal global use across all projects):
@@ -311,7 +311,7 @@ curl -o .claude/commands/open-code-review.md \
 ```bash
 mkdir -p ~/.claude/commands
 curl -o ~/.claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 > **Prerequisite**: All integration methods require the `ocr` CLI to be installed and an LLM configured. See [Install](#install) and [Configure LLM](#1-configure-llm) above.
@@ -601,7 +601,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, coding guidelines,
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/open-code-review&type=Date)](https://star-history.com/#alibaba/open-code-review&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rogoveo/open-code-review&type=Date)](https://star-history.com/#rogoveo/open-code-review&Date)
 
 ## License
 

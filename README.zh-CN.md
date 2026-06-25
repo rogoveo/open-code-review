@@ -12,10 +12,10 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@alibaba-group/open-code-review"><img alt="npm" src="https://img.shields.io/npm/v/@alibaba-group/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/alibaba/open-code-review/release.yml?style=flat-square" /></a>
-  <a href="https://goreportcard.com/report/github.com/alibaba/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://deepwiki.com/alibaba/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/rogoveo/open-code-review/release.yml?style=flat-square" /></a>
+  <a href="https://goreportcard.com/report/github.com/rogoveo/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://deepwiki.com/rogoveo/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
   <a href="https://www.bestpractices.dev/projects/13328"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/13328/badge" /></a>
 </p>
 <p align="center">
@@ -106,43 +106,43 @@ npm install -g @alibaba-group/open-code-review
 使用一条命令为你的操作系统/架构安装最新二进制文件（macOS / Linux）：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh | sh
 ```
 
 该脚本会自动选择匹配的发布二进制文件，校验其 SHA-256 校验和，并将其作为 `ocr` 安装到 `/usr/local/bin`。可通过 `OCR_INSTALL_DIR` 覆盖安装目录，或通过 `OCR_VERSION` 指定发布版本：
 
 ```bash
 OCR_INSTALL_DIR="$HOME/.local/bin" OCR_VERSION=v1.3.13 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh)"
 ```
 
 <details>
 <summary>手动下载（所有平台，包括 Windows）</summary>
 
-从 [GitHub Releases](https://github.com/alibaba/open-code-review/releases) 下载适用于你平台的二进制文件：
+从 [GitHub Releases](https://github.com/rogoveo/open-code-review/releases) 下载适用于你平台的二进制文件：
 
 ```bash
 # macOS (Apple Silicon)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # macOS (Intel)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (x86_64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (ARM64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Windows (x86_64) — 将 ocr.exe 移动到 PATH 目录中
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
 
 # Windows (ARM64) — 将 ocr.exe 移动到 PATH 目录中
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
 ```
 
 </details>
@@ -150,7 +150,7 @@ curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/dow
 **从源码构建**
 
 ```bash
-git clone https://github.com/alibaba/open-code-review.git
+git clone https://github.com/rogoveo/open-code-review.git
 cd open-code-review
 make build
 sudo cp dist/opencodereview /usr/local/bin/ocr
@@ -242,7 +242,7 @@ OCR 可以无缝集成到 AI 编程 Agent 中，作为斜杠命令使用，在 A
 使用 `npx` 将 OCR skill 安装到项目中：
 
 ```bash
-npx skills add alibaba/open-code-review --skill open-code-review
+npx skills add rogoveo/open-code-review --skill open-code-review
 ```
 
 此命令从 [skills 注册表](skills/open-code-review/SKILL.md)安装 `open-code-review` skill，教会你的编程 Agent 如何调用 `ocr` 进行代码审查、按优先级分类问题，并可选择性地应用修复。
@@ -252,7 +252,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 对于 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)，在 Claude Code 中通过以下命令安装命令插件：
 
 ```bash
-/plugin marketplace add alibaba/open-code-review
+/plugin marketplace add rogoveo/open-code-review
 /plugin install open-code-review@open-code-review
 ```
 
@@ -263,7 +263,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 对于本地 Codex，可以从此仓库安装 Open Code Review plugin：
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 /plugins
 ```
@@ -303,7 +303,7 @@ ocr review --audience agent
 ```bash
 mkdir -p .claude/commands
 curl -o .claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 **用户级**（个人全局使用，适用于所有项目）：
@@ -311,7 +311,7 @@ curl -o .claude/commands/open-code-review.md \
 ```bash
 mkdir -p ~/.claude/commands
 curl -o ~/.claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 > **前置条件**：所有集成方式都需要安装 `ocr` CLI 并配置 LLM。参见上方[安装](#安装)和[配置 LLM](#1-配置-llm)。
@@ -586,7 +586,7 @@ ocr config set telemetry.otlp_endpoint localhost:4317
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/open-code-review&type=Date)](https://star-history.com/#alibaba/open-code-review&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rogoveo/open-code-review&type=Date)](https://star-history.com/#rogoveo/open-code-review&Date)
 
 ## 许可证
 

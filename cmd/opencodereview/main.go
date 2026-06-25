@@ -97,5 +97,5 @@ Use "ocr rules -h" for more information about rules.
 Use "ocr config" for more information about config.
 Use "ocr llm" for more information about LLM utilities.
 
-GitHub: https://github.com/alibaba/open-code-review`)
+GitHub: https://github.com/rogoveo/open-code-review`)
 }

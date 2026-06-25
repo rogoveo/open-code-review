@@ -2,7 +2,7 @@
 name: open-code-review
 description: >
   Performs AI-powered code review on Git changes using the `ocr` CLI from
-  alibaba/open-code-review. Use when the user asks to review code, review
+  rogoveo/open-code-review. Use when the user asks to review code, review
   a pull request, review staged/unstaged changes, review a commit, or
   compare branches for code quality issues. Produces line-level review
   comments and can automatically apply fixes when requested. With appropriate
@@ -15,7 +15,7 @@ compatibility: >
   configured LLM (Anthropic or OpenAI-compatible) before first run.
 metadata:
   author: alibaba
-  homepage: https://github.com/alibaba/open-code-review
+  homepage: https://github.com/rogoveo/open-code-review
   version: "1.0.0"
 ---
 
@@ -26,7 +26,7 @@ This Codex plugin skill intentionally mirrors the canonical skill at
 OCR agent instructions; a symlink is avoided because plugin installs may only
 materialize the plugin subtree.
 
-A skill for invoking [open-code-review](https://github.com/alibaba/open-code-review) (`ocr`) — an open-source AI code review CLI that reads Git diffs and generates structured, line-level review comments.
+A skill for invoking [open-code-review](https://github.com/rogoveo/open-code-review) (`ocr`) — an open-source AI code review CLI that reads Git diffs and generates structured, line-level review comments.
 
 ## Prerequisites check
 
@@ -234,6 +234,6 @@ If errors occurred, check the stderr warnings for details about which files fail
 
 ## References
 
-- Full docs: https://github.com/alibaba/open-code-review
+- Full docs: https://github.com/rogoveo/open-code-review
 - NPM package: https://www.npmjs.com/package/@alibaba-group/open-code-review
-- Issue tracker: https://github.com/alibaba/open-code-review/issues
+- Issue tracker: https://github.com/rogoveo/open-code-review/issues

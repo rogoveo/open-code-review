@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
             {language === 'en' ? '中文' : 'EN'}
           </button>
           <a
-            href="https://github.com/alibaba/open-code-review"
+            href="https://github.com/rogoveo/open-code-review"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary text-brand-400 text-sm font-medium px-4 py-2 rounded-lg flex items-center gap-2"

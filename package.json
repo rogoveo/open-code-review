@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alibaba/open-code-review.git"
+    "url": "git+https://github.com/rogoveo/open-code-review.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "ocrConfig": {
-    "urlPattern": "https://github.com/alibaba/open-code-review/releases/download/v{version}/opencodereview-{os}-{arch}",
-    "checksumPattern": "https://github.com/alibaba/open-code-review/releases/download/v{version}/sha256sum.txt"
+    "urlPattern": "https://github.com/rogoveo/open-code-review/releases/download/v{version}/opencodereview-{os}-{arch}",
+    "checksumPattern": "https://github.com/rogoveo/open-code-review/releases/download/v{version}/sha256sum.txt"
   },
   "optionalDependencies": {
     "@alibaba-group/ocr-darwin-arm64": "0.0.0",

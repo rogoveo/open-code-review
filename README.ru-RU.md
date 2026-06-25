@@ -12,10 +12,10 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@alibaba-group/open-code-review"><img alt="npm" src="https://img.shields.io/npm/v/@alibaba-group/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/alibaba/open-code-review/release.yml?style=flat-square" /></a>
-  <a href="https://goreportcard.com/report/github.com/alibaba/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://deepwiki.com/alibaba/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/rogoveo/open-code-review/release.yml?style=flat-square" /></a>
+  <a href="https://goreportcard.com/report/github.com/rogoveo/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://deepwiki.com/rogoveo/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
   <a href="https://www.bestpractices.dev/projects/13328"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/13328/badge" /></a>
 </p>
 <p align="center">
@@ -106,43 +106,43 @@ npm install -g @alibaba-group/open-code-review
 Установите свежий бинарный файл для вашей ОС/архитектуры одной командой (macOS / Linux):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh | sh
 ```
 
 Скрипт сам выбирает подходящий бинарный файл релиза, проверяет его контрольную сумму SHA-256 и устанавливает его как `ocr` в `/usr/local/bin`. Каталог установки можно переопределить через `OCR_INSTALL_DIR`, а версию релиза зафиксировать через `OCR_VERSION`:
 
 ```bash
 OCR_INSTALL_DIR="$HOME/.local/bin" OCR_VERSION=v1.3.13 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh)"
 ```
 
 <details>
 <summary>Ручная загрузка (все платформы, включая Windows)</summary>
 
-Скачайте бинарный файл для вашей платформы со страницы [GitHub Releases](https://github.com/alibaba/open-code-review/releases):
+Скачайте бинарный файл для вашей платформы со страницы [GitHub Releases](https://github.com/rogoveo/open-code-review/releases):
 
 ```bash
 # macOS (Apple Silicon)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # macOS (Intel)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (x86_64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (ARM64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Windows (x86_64) — переместите ocr.exe в каталог из вашего PATH
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
 
 # Windows (ARM64) — переместите ocr.exe в каталог из вашего PATH
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
 ```
 
 </details>
@@ -150,7 +150,7 @@ curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/dow
 **Из исходников**
 
 ```bash
-git clone https://github.com/alibaba/open-code-review.git
+git clone https://github.com/rogoveo/open-code-review.git
 cd open-code-review
 make build
 sudo cp dist/opencodereview /usr/local/bin/ocr
@@ -242,7 +242,7 @@ OCR легко встраивается в ИИ-агентов для разра
 Установите скилл OCR в свой проект через `npx`:
 
 ```bash
-npx skills add alibaba/open-code-review --skill open-code-review
+npx skills add rogoveo/open-code-review --skill open-code-review
 ```
 
 Это установит скилл `open-code-review` из [реестра скиллов](skills/open-code-review/SKILL.md), который объясняет вашему кодинг-агенту, как вызывать `ocr` для код-ревью, классифицировать найденные проблемы по приоритету и при необходимости применять исправления.
@@ -252,7 +252,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 Для [Claude Code](https://docs.anthropic.com/en/docs/claude-code) установите плагин с командой, выполнив в Claude Code:
 
 ```bash
-/plugin marketplace add alibaba/open-code-review
+/plugin marketplace add rogoveo/open-code-review
 /plugin install open-code-review@open-code-review
 ```
 
@@ -263,7 +263,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 Для локального Codex установите плагин Open Code Review из этого репозитория:
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 /plugins
 ```
@@ -303,7 +303,7 @@ ocr review --audience agent
 ```bash
 mkdir -p .claude/commands
 curl -o .claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 **На уровне пользователя** (личное глобальное использование во всех проектах):
@@ -311,7 +311,7 @@ curl -o .claude/commands/open-code-review.md \
 ```bash
 mkdir -p ~/.claude/commands
 curl -o ~/.claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 > **Требование**: для всех способов интеграции необходим установленный CLI `ocr` и настроенная LLM. См. разделы [Установка](#установка) и [Настройте LLM](#быстрый-старт) выше.
@@ -598,7 +598,7 @@ ocr config set telemetry.otlp_endpoint localhost:4317
 
 ## История звёзд
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/open-code-review&type=Date)](https://star-history.com/#alibaba/open-code-review&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rogoveo/open-code-review&type=Date)](https://star-history.com/#rogoveo/open-code-review&Date)
 
 ## Лицензия
 

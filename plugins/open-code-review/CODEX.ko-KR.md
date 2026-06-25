@@ -40,7 +40,7 @@ ocr llm test
 Codex에서 이 repo를 marketplace로 추가합니다.
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 ```
 

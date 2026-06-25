@@ -12,10 +12,10 @@
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@alibaba-group/open-code-review"><img alt="npm" src="https://img.shields.io/npm/v/@alibaba-group/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/alibaba/open-code-review/release.yml?style=flat-square" /></a>
-  <a href="https://goreportcard.com/report/github.com/alibaba/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://github.com/alibaba/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/alibaba/open-code-review?style=flat-square" /></a>
-  <a href="https://deepwiki.com/alibaba/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/rogoveo/open-code-review/release.yml?style=flat-square" /></a>
+  <a href="https://goreportcard.com/report/github.com/rogoveo/open-code-review"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://github.com/rogoveo/open-code-review/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/rogoveo/open-code-review?style=flat-square" /></a>
+  <a href="https://deepwiki.com/rogoveo/open-code-review"><img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg" /></a>
   <a href="https://www.bestpractices.dev/projects/13328"><img alt="OpenSSF Best Practices" src="https://www.bestpractices.dev/projects/13328/badge" /></a>
 </p>
 <p align="center">
@@ -106,43 +106,43 @@ npm install -g @alibaba-group/open-code-review
 1 つのコマンドで、お使いの OS / アーキテクチャ向けの最新バイナリをインストールできます（macOS / Linux）：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh | sh
 ```
 
 このスクリプトは適切なリリースバイナリを選択し、SHA-256 チェックサムを検証して、`ocr` として `/usr/local/bin` にインストールします。インストール先は `OCR_INSTALL_DIR` で、リリースバージョンは `OCR_VERSION` で上書きできます：
 
 ```bash
 OCR_INSTALL_DIR="$HOME/.local/bin" OCR_VERSION=v1.3.13 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/alibaba/open-code-review/main/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/rogoveo/open-code-review/main/install.sh)"
 ```
 
 <details>
 <summary>手動ダウンロード（Windows を含む全プラットフォーム）</summary>
 
-[GitHub Releases](https://github.com/alibaba/open-code-review/releases)からお使いのプラットフォーム向けのバイナリをダウンロードします：
+[GitHub Releases](https://github.com/rogoveo/open-code-review/releases)からお使いのプラットフォーム向けのバイナリをダウンロードします：
 
 ```bash
 # macOS (Apple Silicon)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # macOS (Intel)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-darwin-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-darwin-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (x86_64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-amd64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-amd64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Linux (ARM64)
-curl -Lo ocr https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-linux-arm64
+curl -Lo ocr https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-linux-arm64
 chmod +x ocr && sudo mv ocr /usr/local/bin/ocr
 
 # Windows (x86_64) — ocr.exe を PATH の通ったディレクトリに移動してください
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-amd64.exe
 
 # Windows (ARM64) — ocr.exe を PATH の通ったディレクトリに移動してください
-curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
+curl -Lo ocr.exe https://github.com/rogoveo/open-code-review/releases/latest/download/opencodereview-windows-arm64.exe
 ```
 
 </details>
@@ -150,7 +150,7 @@ curl -Lo ocr.exe https://github.com/alibaba/open-code-review/releases/latest/dow
 **ソースから**
 
 ```bash
-git clone https://github.com/alibaba/open-code-review.git
+git clone https://github.com/rogoveo/open-code-review.git
 cd open-code-review
 make build
 sudo cp dist/opencodereview /usr/local/bin/ocr
@@ -242,7 +242,7 @@ OCRはスラッシュコマンドとしてAIコーディングエージェント
 `npx`を使ってOCRスキルをプロジェクトにインストールします：
 
 ```bash
-npx skills add alibaba/open-code-review --skill open-code-review
+npx skills add rogoveo/open-code-review --skill open-code-review
 ```
 
 これにより、[skillsレジストリ](skills/open-code-review/SKILL.md)から`open-code-review`スキルがインストールされ、コーディングエージェントにコードレビューのための`ocr`の呼び出し方、優先度による問題の分類、必要に応じた修正の適用を教えます。
@@ -252,7 +252,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)の場合、Claude Code内で以下のコマンドを実行してコマンドプラグインをインストールします：
 
 ```bash
-/plugin marketplace add alibaba/open-code-review
+/plugin marketplace add rogoveo/open-code-review
 /plugin install open-code-review@open-code-review
 ```
 
@@ -263,7 +263,7 @@ npx skills add alibaba/open-code-review --skill open-code-review
 ローカルCodexでは、このリポジトリからOpen Code Reviewプラグインをインストールできます：
 
 ```bash
-codex plugin marketplace add alibaba/open-code-review
+codex plugin marketplace add rogoveo/open-code-review
 codex
 /plugins
 ```
@@ -303,7 +303,7 @@ ocr review --audience agent
 ```bash
 mkdir -p .claude/commands
 curl -o .claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 **ユーザーレベル**（全プロジェクトで個人用にグローバル利用）：
@@ -311,7 +311,7 @@ curl -o .claude/commands/open-code-review.md \
 ```bash
 mkdir -p ~/.claude/commands
 curl -o ~/.claude/commands/open-code-review.md \
-  https://raw.githubusercontent.com/alibaba/open-code-review/main/plugins/open-code-review/commands/review.md
+  https://raw.githubusercontent.com/rogoveo/open-code-review/main/plugins/open-code-review/commands/review.md
 ```
 
 > **前提条件**: すべての統合方法において、`ocr` CLIのインストールとLLMの設定が必要です。上記の[インストール](#インストール)と[LLMの設定](#1-llmの設定)を参照してください。
@@ -596,7 +596,7 @@ ocr config set telemetry.otlp_endpoint localhost:4317
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alibaba/open-code-review&type=Date)](https://star-history.com/#alibaba/open-code-review&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=rogoveo/open-code-review&type=Date)](https://star-history.com/#rogoveo/open-code-review&Date)
 
 ## ライセンス
 
