@@ -21,5 +21,5 @@ func printVersion() {
 	if BuildDate != "" {
 		fmt.Printf("built at: %s\n", BuildDate)
 	}
-	fmt.Println("https://github.com/alibaba/open-code-review")
+	fmt.Println("https://github.com/rogoveo/open-code-review")
 }

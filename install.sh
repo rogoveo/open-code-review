@@ -5,7 +5,7 @@
 set -eu
 
 main() {
-  REPO="alibaba/open-code-review"
+  REPO="rogoveo/open-code-review"
   BIN="ocr"
   ASSET_PREFIX="opencodereview"
   INSTALL_DIR="${OCR_INSTALL_DIR:-/usr/local/bin}"
