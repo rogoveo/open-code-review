@@ -2,6 +2,8 @@ package llm
 
 import (
 	"context"
+	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -214,6 +216,72 @@ func TestBuildAnthropicParams_CacheControl_NoSystem(t *testing.T) {
 	}
 	if params.Tools[0].OfTool.CacheControl.Type != "ephemeral" {
 		t.Errorf("tool CacheControl.Type = %q, want %q", params.Tools[0].OfTool.CacheControl.Type, "ephemeral")
+	}
+}
+
+func TestOpenAIClient_AssistantToolCallIncludesEmptyContent(t *testing.T) {
+	var requestBody []byte
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var err error
+		requestBody, err = io.ReadAll(r.Body)
+		if err != nil {
+			t.Fatalf("ReadAll request body: %v", err)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{
+			"id":"chatcmpl-test",
+			"object":"chat.completion",
+			"created":1710000000,
+			"model":"test-model",
+			"choices":[{
+				"index":0,
+				"message":{"role":"assistant","content":"ok"},
+				"finish_reason":"stop"
+			}],
+			"usage":{"prompt_tokens":1,"completion_tokens":1,"total_tokens":2}
+		}`))
+	}))
+	defer server.Close()
+
+	client := NewOpenAIClient(ClientConfig{
+		URL:    server.URL + "/v1",
+		APIKey: "test-key",
+		Model:  "test-model",
+	})
+
+	_, err := client.CompletionsWithCtx(context.Background(), ChatRequest{
+		Messages: []Message{
+			NewTextMessage("user", "read a file"),
+			NewToolCallMessage("", []ToolCall{{
+				ID:   "call_123",
+				Type: "function",
+				Function: FunctionCall{
+					Name:      "file_read_diff",
+					Arguments: `{"path_array":["lib/init.yml"]}`,
+				},
+			}}),
+		},
+	})
+	if err != nil {
+		t.Fatalf("CompletionsWithCtx: %v", err)
+	}
+
+	var payload struct {
+		Messages []map[string]any `json:"messages"`
+	}
+	if err := json.Unmarshal(requestBody, &payload); err != nil {
+		t.Fatalf("Unmarshal request body: %v\nbody=%s", err, string(requestBody))
+	}
+	if len(payload.Messages) != 2 {
+		t.Fatalf("messages length = %d, want 2; body=%s", len(payload.Messages), string(requestBody))
+	}
+	content, ok := payload.Messages[1]["content"]
+	if !ok {
+		t.Fatalf("assistant tool-call message is missing content: %s", string(requestBody))
+	}
+	if content != "" {
+		t.Fatalf("assistant tool-call content = %#v, want empty string", content)
 	}
 }
 

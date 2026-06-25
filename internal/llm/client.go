@@ -353,9 +353,7 @@ func (c *OpenAIClient) buildOpenAIParams(model string, req ChatRequest) openai.C
 				messages = append(messages, openai.AssistantMessage(content))
 			} else {
 				asst := openai.ChatCompletionAssistantMessageParam{}
-				if content != "" {
-					asst.Content.OfString = openai.String(content)
-				}
+				asst.Content.OfString = openai.String(content)
 				for _, tc := range msg.ToolCalls {
 					asst.ToolCalls = append(asst.ToolCalls, openai.ChatCompletionMessageToolCallUnionParam{
 						OfFunction: &openai.ChatCompletionMessageFunctionToolCallParam{
